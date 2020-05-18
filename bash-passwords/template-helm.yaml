@@ -1,0 +1,168 @@
+# ---------------------------------------------------------------
+# GLOBAL CONFIGS
+# ---------------------------------------------------------------
+
+global:
+
+  provider: aws
+  dockerconfigjson: 
+
+  aws:
+    region: us-east-1
+    # get NFS_ID from below command:
+    # aws efs describe-file-systems | jq '.FileSystems[] | "\(.FileSystemId)   \(.Name)"'
+    nfsAddress: {NFS_ID}.efs.us-east-1.amazonaws.com
+
+  # console & webapp domain
+  domain: https://{COMPANY}.unsupervised.com
+
+  tls: 
+    enabled: true
+    tlsCrtBase64: 
+    tlsKeyBase64: 
+    domain: "*.unsupervised.com"
+
+  # fusionauth specific global configurations
+  fusionAuth:
+    domain: https://login.{COMPANY}.unsupervised.com
+    apiKey: {LONG_PASSWORD}
+    templates:
+      mentionedId: 5f83bc27-ba29-4c8f-b40c-65a07105b975
+      forgotPwdId: 68e2963b-2db6-4473-b86c-7ec6bd78a387
+
+  console:
+    # console application.clientId & application.oauthConfiguration.clientSecret for fusionauth
+    clientId: {LONG_PASSWORD}
+    clientSecret: {LONG_PASSWORD}
+
+  webapp:
+    # webapp application.clientId & application.oauthConfiguration.clientSecret for fusionauth
+    clientId: {LONG_PASSWORD}
+    clientSecret: {LONG_PASSWORD}
+
+  gasket:
+    auth:
+      enabled: true
+      # make sure your password does not require uri encoding, ie do not use the characters below
+      # ! * ' ( ) ; : @ & = + $ , / ? # [ ] >>>>> https://tools.ietf.org/html/rfc3986#section-2.2
+      elasticPassword: {SHORT_PASSWORD}
+
+  minio:
+    accessKey: {SHORT_PASSWORD}
+    secretKey: {SHORT_PASSWORD}
+
+# ---------------------------------------------------------------
+# APPLICATION LEVEL CONFIGS
+# ---------------------------------------------------------------
+
+ai:
+  enabled: true
+
+  jupyter-lab:
+    enabled: true
+
+    # if you want to mount ink code, also enable squid.ink.mountCode
+    mountCode: false
+    mountData: false
+
+    # generate password hash: python -c "from notebook.auth import passwd; print(passwd('0x2X5RHB1mSXOXbI'))"
+    jupyterPasswordHash: sha1:fe3b252c1d8c:a4aae5bcf0fde52430b5894a93082a33e95eda79
+
+fusionauth:
+  mountData: false
+
+  # an admin user with access to console & fusionauth applications
+  adminUser:
+    email: adminfor+{SLUG}@unsupervised.com
+    password: {SHORT_PASSWORD}
+    firstName: Admin
+    lastName: Unsupervised
+
+  # create test & demo users for ivy-park, z-cypress-test
+  companyName: {COMPANY}
+
+  # defines fusionauth application.oauthConfiguration.authorizedRedirectURLs
+  webappLogoutUrl: https://roadrunner.unsupervised.com/login
+  webappRedirectUrls:
+  - https://{COMPANY}.unsupervised.com/callback
+  consoleRedirectUrls:
+  - https://{COMPANY}.unsupervised.com/authorize
+
+  # credentials used to send fusionauth application emails
+  smtpPassword: zykmlaervkgsflvu
+  smtpUsername: noreply@unsupervised.com
+  enableTestUsers: true
+
+gasket:
+  enabled: true
+  elasticsearch:
+    mountData: false
+
+gitea:
+  enabled: true
+  mountData: false
+  storageSize: 20Gi
+
+kevin:
+  enabled: true
+  mountCode: false
+  mountData: false
+
+  kevin-backend:
+    mountInitCode: false
+    runGasketMigrate: true
+    recreateCompanies: true
+    loadDemoData: false
+
+    companies:
+      - name: {COMPANY_WITH_GRAMMAR}
+        slug: {COMPANY}
+        es_company_id: 1
+        # es_host_url: https://ivy-park:c14706222f05475d8fb56e20bfc904a0@0bdfdb2c2f964d9296b1eb82b314d357.us-central1.gcp.cloud.es.io:9243
+
+    postgres11:
+      storageSize: 20Gi
+
+minio:
+  enabled: true
+  mountData: false
+  standAloneMode: true
+  minioDiskSize: 100Gi
+
+nfs-client:
+  enabled: true
+  aws:
+    efsFsId: {NFS_ID}
+
+squid:
+  mountCode: false
+  mountData: false
+  ink:
+    mountCode: false
+
+
+# ---------------------------------------------------------------
+# INGRESS APPLICATIONS
+# ---------------------------------------------------------------
+
+unsupervised-ingress:
+  enabled: true
+  name: nginx
+  ingressConfig:
+    loadBalancer:
+      enabled: true
+      type: external
+    nodePort:
+      enabled: false
+  auth:
+    enabled: true
+
+fusion-auth-ingress:
+  enabled: true
+  name: fa-nginx
+  ingressConfig:
+    loadBalancer:
+      enabled: true
+      type: external
+    nodePort:
+      enabled: false

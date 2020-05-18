@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Only need to change this part
+SLUG='sales'
+
+cluster="unsupervised-${SLUG}-cluster"
+us_east_1_thumbprint=9e99a48a9960b14926bb7f3b02e22da2b0ab7280
+account_id=`aws sts get-caller-identity | jq -r .Account`
+
+oidc_url=`aws eks describe-cluster --name ${cluster} --query cluster.identity.oidc.issuer --output text`
+
+
+oidc_provider_url=`aws iam create-open-id-connect-provider \
+                   --url ${oidc_url} \
+                   --thumbprint-list ${us_east_1_thumbprint} \
+                   --client-id-list sts.amazonaws.com | jq -r '.OpenIDConnectProviderArn'`
+
+oidc_provider=$(echo ${oidc_provider_url} | cut -d '/' -f 2-)
+
+echo 'S3 iam role trust'
+echo '{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "'${oidc_provider_url}'"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "'${oidc_provider}':sub": "system:serviceaccount:'${SLUG}-ai':jupyter-lab-ink"
+        }
+      }
+    }
+  ]
+}'
+
+echo
+echo 'run on cluster'
+echo "kubectl edit sa jupyter-lab-ink -n ${SLUG}-ai"
+
+echo
+echo 'add annotation'
+echo "
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::${account_id}:role/UnsupervisedRole/S3Access/UnsupervisedRoleS3Access-${SLUG}
+"

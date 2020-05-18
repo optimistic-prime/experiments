@@ -1,0 +1,2 @@
+op signin unsupervised.1password.com alex.romine@unsupervised.com
+# export `op signin unsupervised.1password.com alex.romine@unsupervised.com | head -n 1`

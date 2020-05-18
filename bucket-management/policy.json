@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::unsupervised-expansion",
+                "arn:aws:s3:::unsupervised-expansion/*"
+            ],
+            "Condition": {
+                "StringNotLike": {
+                    "aws:userId": [
+                        "${AWS::AccountId}",
+                        "AROATUG6VCBQ422JESBQG"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "DelegateS3Access",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::249575051361:role/UnsupervisedRole/S3Access/UnsupervisedRoleS3Access-sales",
+                    "arn:aws:iam::487522996593:role/UnsupervisedRole/DataScience/UnsupervisedRole-DataScience",
+                    "arn:aws:iam::487522996593:role/UnsupervisedRole/S3Access/UnsupervisedRoleS3Access-adp-ws",
+                    "arn:aws:iam::569065515831:role/UnsupervisedRole/DataScience/UnsupervisedRoleDataScience"
+                ]
+            },
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::unsupervised-expansion/*",
+                "arn:aws:s3:::unsupervised-expansion"
+            ]
+        }
+    ]
+}
