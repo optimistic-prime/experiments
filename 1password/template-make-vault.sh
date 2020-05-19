@@ -28,7 +28,7 @@ op create vault ${vault_name}
 # Create users; email and password have a "/" between them
 ######################################################################
 LIST=(
-  # email/password
+  # password_username
 )
 
 
@@ -37,12 +37,12 @@ LIST=(
 # How the sausage is made
 ######################################################################
 for i in ${LIST[@]}
-do IFS="/"
+do IFS="_"
   set -- $i
   (
     # this is to create a user, just fill in the username and password. 
-    USERNM="$1"
-    PASSWD="$2"
+    USERNM="$2"
+    PASSWD="$1"
   
     USER_UUID=$(op list users | jq -r '.[] | select(.email | contains("'$USERNM'")) | .uuid')
     LOGIN=`echo '{
