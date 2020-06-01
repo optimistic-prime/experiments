@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Only need to change this part
-SLUG='cw-two'
+SLUG='datascience'
 
 cluster="unsupervised-${SLUG}-cluster"
 us_east_1_thumbprint=9e99a48a9960b14926bb7f3b02e22da2b0ab7280
