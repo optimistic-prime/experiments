@@ -26,9 +26,29 @@ microk8s.kubectl expose deployment grafana --type=NodePort --port=3000 --target-
 ################################################################################
 # Alex R had some issues with postgres pod, may need to delete your /mnt/data folder (or move it to data.bkup/)
 # Then delete the postgres pod and it should work after a deletion or two. 
-mk apply -f postgres/
+microk8s.kubectl apply -f postgres/
+# login in to db is `PGPASSWORD=admin123 psql -U postgresadmin -d postgresdb`
 
 
 ################################################################################
-# 
+# Create reporter deployment
 ################################################################################
+(
+  cd reporter
+  ./build-me.sh
+)
+
+
+################################################################################
+# Helm Installation
+################################################################################
+# Assumes helm already installed locally
+(
+  cd helm
+
+  mkdir p ~/tmp/microk8s
+  microk8s.config > ~/tmp/microk8s/microk8s.conf
+  export KUBECONFIG=~/tmp/microk8s/microk8s.conf
+  
+  helm install meh $unsupervised/unsupervised -f $unsupervised/images.yaml -f unsupervised-values.yaml
+)

@@ -1,0 +1,227 @@
+# ---------------------------------------------------------------
+# GLOBAL CONFIGS
+# ---------------------------------------------------------------
+
+global:
+
+  provider: aws
+
+  dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2djci5pbyI6eyJ1c2VybmFtZSI6Il9qc29uX2tleSIsInBhc3N3b3JkIjoie1xuICBcInR5cGVcIjogXCJzZXJ2aWNlX2FjY291bnRcIixcbiAgXCJwcm9qZWN0X2lkXCI6IFwidW5zdXBlcnZpc2VkLWRldi1vcHNcIixcbiAgXCJwcml2YXRlX2tleV9pZFwiOiBcIjRiYWRkZTRmZTgwZGYyYTZkODE5NmNmYmU1NGFjMTIzMzgxOWE2ZjBcIixcbiAgXCJwcml2YXRlX2tleVwiOiBcIi0tLS0tQkVHSU4gUFJJVkFURSBLRVktLS0tLVxcbk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRRGRwamxLREdGMG9saklcXG5vbGdIYU41WE1nTENSbXhwZXlOTFd1MVl0cUxTK3Jpd0lZck5zK0s3cWRUY3JDOWw3aUFHVGE4Q3RqdS8xWi9vXFxuUjUyd0NtcStFNi82RzhmakUxL3lVM0ZBcGlwNnVPNmpwN2dIUWllTmNyUm1GQVBwUjFoTVJhM3QwNmVidTFHUFxcbm0rK2oxQ2ZyMkhlZVMxRDJOOFR0ckhBMnpZYU9uNzVKZ1pjTDYzUWN1Q3ZZY0ZNY1lBdldHcVF3Wnd4OXR5WGVcXG5aL3F2WWJZbVNyNmY4RFNUQ083WGdZbFRmN1p2eWtabGh3NlIxakJDRytpd20xZjlFL2pUbjYxZmNHcmJxMkxqXFxubU9nQVdCL1AxeVRGL2tzdEZFTFVyazAvSE1BbGs0cnBHc3lsckFmNkNnRFcrYno3MVp1RHhZUW1LQmxqLzgveFxcbklGQTlPR3lqQWdNQkFBRUNnZ0VBR3JvRTlYTlp1d1VxZklMcTUzWFRQYU5ucHNKMEp5SDBodzBmU28rM1FZWi9cXG5CNm43d1VNY0ozSGFtNE5kc2NaTmNVVWp3Y2wwbWZTcDlBblNyMXdLTkFKT3VYTnBIbTRESjBhOWhNU2tvYWkwXFxuQ2VMYTgzRWNNTmV3ZmhDU3lpblNzVnZEbGNac1V3QjYzTHk2WUVCZ1VmV0hzdncwOW9PU0NQQytsVFVpTVFkRFxcbmtubzFGMEVHaS9pQktRSmszSUJrTW5tNGV1ZEk3MSs0N2hVc2ZSdm96Rk9xdFJ2TUFuNmVHTWNtRDQzOWFXYnBcXG5RbDY3K0FIbnRvcGswZUc4QUQrelVkd3poekhFVklTaWYzUVdrMEFHQ013NEpCTkFzajNreG5ZOXgyOVFZMmp6XFxuVnd4SlIzcTFVazE1UlVMS2JCSkpqNGtTVXJlc3U3SCtwSVpZUEh4NWJRS0JnUUQ4QUlQWWZMVmtQQWVTQ2JmVFxcbllneVpBWHp5RWVWaUtJdlFxUmZDVjZCUDc1b0FFMkF6Z2k4QVhBdE04QXBQa0F1Q3RhYVpTaVVTMTVlQTJEQnNcXG42eXVpY3pDTWtxTkVuUU9PN0VGTmhpVGdyVy9PWk9MbG8yTVJQSnBIRG85RDJ4WmdwR3FKWnJzdUNiMUxsNTFNXFxuUWU2ck9XOURUbGpyeUI5aFdER2hEYXozbFFLQmdRRGhLbThQS0xHcnZ0WHFWeTZkVnc5aGNGY3NlR2pqZU5TelxcbkE0VG9ib3hycWgwLzZLa3J6U1JiRG84S0VxSEVnOFFPUkZlbytXNFpYbFZUQmRWYTdnWVcvb2xLWWRMNnkwaFlcXG5BU3ZXVExMTzVHUkxWdCtyQWpyMzR5czZMWGpmTjZ3NkIwZXlwSnpDeHFtcG5EUGdTRHoxY21ldnNFM0xmVDF4XFxuV2E2UkNCamxWd0tCZ1FDWlJPYnI0TTJpYlRCZGpqT1VDV3FJRlBPZGQyMEFTcERmRkRrekpvQ0duY0FZazdCTFxcbkk3N2FoU0VLWm1TZkI0azRzcXJsU01kTHNueWZETjVISUxHbFdGSUs3WlVId2tmTHdiM21ITlNKSW5PQ0lMSXZcXG40VFA3NDlRaHE2VlBMQTFzTWhQcUJlV0tscm5mSkJPenNkWXJwZjhaL0tqd253TVcvY0VScDNPd0VRS0JnQzJMXFxuTDd1Wk41Yk5tdWN6aXpJNEVkeGJwTVpSOUtWT0kzZXlGb2dORkVvU3RxZmVuNWxFZlQ0Tnk5RDF3OUxEOUR3T1xcbmhzeWU1eTRxYm9mRWZrdE9LZDBzendoRWtUQTVQZ0RPKzliMDNKWU1qRnpRelowQmJud0ZieER0Y2ExMHpWbFBcXG5iNmtxc3FxVEZHNUNNaHdEZ0pFRSt3UUdYVFh6dHlIZVNmajc4azB4QW9HQkFMNmMzcExZTVlQMXpFa3ZWV3cxXFxuZ0cwaytic0gxVnBwMHhNQUYwUFUvK25BYU5Hd2JTSkVQcTNJT1dLT1NZSDdmTDJTQ1c0c3FVZlNqWS82dU5PV1xcbkEvYTlQVFNlWTNRVVFZNy9xcmY4a1pQd2JMTWozeGJ3azgrcUdqRUNrcGhlYmRRVWZDRWNJeWFFQ2hxQ0RRR3VcXG5oN2dGWFBwT0F1ZENsdkRsdEFORzdJSFRcXG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tXFxuXCIsXG4gIFwiY2xpZW50X2VtYWlsXCI6IFwiZG9ja2VyLWltYWdlLXB1bGxzLW9ubHlAdW5zdXBlcnZpc2VkLWRldi1vcHMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb21cIixcbiAgXCJjbGllbnRfaWRcIjogXCIxMTU0ODc0MzA1NjIzNTc1ODM0MDVcIixcbiAgXCJhdXRoX3VyaVwiOiBcImh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoXCIsXG4gIFwidG9rZW5fdXJpXCI6IFwiaHR0cHM6Ly9vYXV0aDIuZ29vZ2xlYXBpcy5jb20vdG9rZW5cIixcbiAgXCJhdXRoX3Byb3ZpZGVyX3g1MDlfY2VydF91cmxcIjogXCJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHNcIixcbiAgXCJjbGllbnRfeDUwOV9jZXJ0X3VybFwiOiBcImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3YxL21ldGFkYXRhL3g1MDkvZG9ja2VyLWltYWdlLXB1bGxzLW9ubHklNDB1bnN1cGVydmlzZWQtZGV2LW9wcy5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbVwiXG59IiwiZW1haWwiOiJkZXYtb3BzQHVuc3VwZXJ2aXNlZC5jb20iLCJhdXRoIjoiWDJwemIyNWZhMlY1T25zS0lDQWlkSGx3WlNJNklDSnpaWEoyYVdObFgyRmpZMjkxYm5RaUxBb2dJQ0p3Y205cVpXTjBYMmxrSWpvZ0luVnVjM1Z3WlhKMmFYTmxaQzFrWlhZdGIzQnpJaXdLSUNBaWNISnBkbUYwWlY5clpYbGZhV1FpT2lBaU5HSmhaR1JsTkdabE9EQmtaakpoTm1RNE1UazJZMlppWlRVMFlXTXhNak16T0RFNVlUWm1NQ0lzQ2lBZ0luQnlhWFpoZEdWZmEyVjVJam9nSWkwdExTMHRRa1ZIU1U0Z1VGSkpWa0ZVUlNCTFJWa3RMUzB0TFZ4dVRVbEpSWFpuU1VKQlJFRk9RbWRyY1docmFVYzVkekJDUVZGRlJrRkJVME5DUzJkM1oyZFRhMEZuUlVGQmIwbENRVkZFWkhCcWJFdEVSMFl3YjJ4cVNWeHViMnhuU0dGT05WaE5aMHhEVW0xNGNHVjVUa3hYZFRGWmRIRk1VeXR5YVhkSldYSk9jeXRMTjNGa1ZHTnlRemxzTjJsQlIxUmhPRU4wYW5Vdk1Wb3ZiMXh1VWpVeWQwTnRjU3RGTmk4MlJ6aG1ha1V4TDNsVk0wWkJjR2x3Tm5WUE5tcHdOMmRJVVdsbFRtTnlVbTFHUVZCd1VqRm9UVkpoTTNRd05tVmlkVEZIVUZ4dWJTc3JhakZEWm5JeVNHVmxVekZFTWs0NFZIUnlTRUV5ZWxsaFQyNDNOVXBuV21OTU5qTlJZM1ZEZGxsalJrMWpXVUYyVjBkeFVYZGFkM2c1ZEhsWVpWeHVXaTl4ZGxsaVdXMVRjalptT0VSVFZFTlBOMWhuV1d4VVpqZGFkbmxyV214b2R6WlNNV3BDUTBjcmFYZHRNV1k1UlM5cVZHNDJNV1pqUjNKaWNUSk1hbHh1YlU5blFWZENMMUF4ZVZSR0wydHpkRVpGVEZWeWF6QXZTRTFCYkdzMGNuQkhjM2xzY2tGbU5rTm5SRmNyWW5vM01WcDFSSGhaVVcxTFFteHFMemd2ZUZ4dVNVWkJPVTlIZVdwQlowMUNRVUZGUTJkblJVRkhjbTlGT1ZoT1duVjNWWEZtU1V4eE5UTllWRkJoVG01d2Mwb3dTbmxJTUdoM01HWlRieXN6VVZsYUwxeHVRalp1TjNkVlRXTktNMGhoYlRST1pITmpXazVqVlZWcWQyTnNNRzFtVTNBNVFXNVRjakYzUzA1QlNrOTFXRTV3U0cwMFJFb3dZVGxvVFZOcmIyRnBNRnh1UTJWTVlUZ3pSV05OVG1WM1ptaERVM2xwYmxOelZuWkViR05hYzFWM1FqWXpUSGsyV1VWQ1oxVm1WMGh6ZG5jd09XOVBVME5RUXl0c1ZGVnBUVkZrUkZ4dWEyNXZNVVl3UlVkcEwybENTMUZLYXpOSlFtdE5ibTAwWlhWa1NUY3hLelEzYUZWelpsSjJiM3BHVDNGMFVuWk5RVzQyWlVkTlkyMUVORE01WVZkaWNGeHVVV3cyTnl0QlNHNTBiM0JyTUdWSE9FRkVLM3BWWkhkNmFIcElSVlpKVTJsbU0xRlhhekJCUjBOTmR6UktRazVCYzJvemEzaHVXVGw0TWpsUldUSnFlbHh1Vm5kNFNsSXpjVEZWYXpFMVVsVk1TMkpDU2twcU5HdFRWWEpsYzNVM1NDdHdTVnBaVUVoNE5XSlJTMEpuVVVRNFFVbFFXV1pNVm10UVFXVlRRMkptVkZ4dVdXZDVXa0ZZZW5sRlpWWnBTMGwyVVhGU1prTldOa0pRTnpWdlFVVXlRWHBuYVRoQldFRjBUVGhCY0ZCclFYVkRkR0ZoV2xOcFZWTXhOV1ZCTWtSQ2MxeHVObmwxYVdONlEwMXJjVTVGYmxGUFR6ZEZSazVvYVZSbmNsY3ZUMXBQVEd4dk1rMVNVRXB3U0VSdk9VUXllRnBuY0VkeFNscHljM1ZEWWpGTWJEVXhUVnh1VVdVMmNrOVhPVVJVYkdweWVVSTVhRmRFUjJoRVlYb3piRkZMUW1kUlJHaExiVGhRUzB4SGNuWjBXSEZXZVRaa1ZuYzVhR05HWTNObFIycHFaVTVUZWx4dVFUUlViMkp2ZUhKeGFEQXZOa3RyY25wVFVtSkViemhMUlhGSVJXYzRVVTlTUm1WdksxYzBXbGhzVmxSQ1pGWmhOMmRaVnk5dmJFdFpaRXcyZVRCb1dWeHVRVk4yVjFSTVRFODFSMUpNVm5RcmNrRnFjak0wZVhNMlRGaHFaazQyZHpaQ01HVjVjRXA2UTNoeGJYQnVSRkJuVTBSNk1XTnRaWFp6UlROTVpsUXhlRnh1VjJFMlVrTkNhbXhXZDB0Q1oxRkRXbEpQWW5JMFRUSnBZbFJDWkdwcVQxVkRWM0ZKUmxCUFpHUXlNRUZUY0VSbVJrUnJla3B2UTBkdVkwRlphemRDVEZ4dVNUYzNZV2hUUlV0YWJWTm1RalJyTkhOeGNteFRUV1JNYzI1NVprUk9OVWhKVEVkc1YwWkpTemRhVlVoM2EyWk1kMkl6YlVoT1UwcEpiazlEU1V4SmRseHVORlJRTnpRNVVXaHhObFpRVEVFeGMwMW9VSEZDWlZkTGJISnVaa3BDVDNwelpGbHljR1k0V2k5TGFuZHVkMDFYTDJORlVuQXpUM2RGVVV0Q1owTXlURnh1VERkMVdrNDFZazV0ZFdONmFYcEpORVZrZUdKd1RWcFNPVXRXVDBrelpYbEdiMmRPUmtWdlUzUnhabVZ1Tld4RlpsUTBUbms1UkRGM09VeEVPVVIzVDF4dWFITjVaVFY1TkhGaWIyWkZabXQwVDB0a01ITjZkMmhGYTFSQk5WQm5SRThyT1dJd00wcFpUV3BHZWxGNldqQkNZbTUzUm1KNFJIUmpZVEV3ZWxac1VGeHVZalpyY1hOeGNWUkdSelZEVFdoM1JHZEtSVVVyZDFGSFdGUlllblI1U0dWVFptbzNPR3N3ZUVGdlIwSkJURFpqTTNCTVdVMVpVREY2Uld0MlZsZDNNVnh1WjBjd2F5dGljMGd4Vm5Cd01IaE5RVVl3VUZVdksyNUJZVTVIZDJKVFNrVlFjVE5KVDFkTFQxTlpTRGRtVERKVFExYzBjM0ZWWmxOcVdTODJkVTVQVjF4dVFTOWhPVkJVVTJWWk0xRlZVVmszTDNGeVpqaHJXbEIzWWt4TmFqTjRZbmRyT0N0eFIycEZRMnR3YUdWaVpGRlZaa05GWTBsNVlVVkRhSEZEUkZGSGRWeHVhRGRuUmxoUWNFOUJkV1JEYkhaRWJIUkJUa2MzU1VoVVhHNHRMUzB0TFVWT1JDQlFVa2xXUVZSRklFdEZXUzB0TFMwdFhHNGlMQW9nSUNKamJHbGxiblJmWlcxaGFXd2lPaUFpWkc5amEyVnlMV2x0WVdkbExYQjFiR3h6TFc5dWJIbEFkVzV6ZFhCbGNuWnBjMlZrTFdSbGRpMXZjSE11YVdGdExtZHpaWEoyYVdObFlXTmpiM1Z1ZEM1amIyMGlMQW9nSUNKamJHbGxiblJmYVdRaU9pQWlNVEUxTkRnM05ETXdOVFl5TXpVM05UZ3pOREExSWl3S0lDQWlZWFYwYUY5MWNta2lPaUFpYUhSMGNITTZMeTloWTJOdmRXNTBjeTVuYjI5bmJHVXVZMjl0TDI4dmIyRjFkR2d5TDJGMWRHZ2lMQW9nSUNKMGIydGxibDkxY21raU9pQWlhSFIwY0hNNkx5OXZZWFYwYURJdVoyOXZaMnhsWVhCcGN5NWpiMjB2ZEc5clpXNGlMQW9nSUNKaGRYUm9YM0J5YjNacFpHVnlYM2cxTURsZlkyVnlkRjkxY213aU9pQWlhSFIwY0hNNkx5OTNkM2N1WjI5dloyeGxZWEJwY3k1amIyMHZiMkYxZEdneUwzWXhMMk5sY25Seklpd0tJQ0FpWTJ4cFpXNTBYM2cxTURsZlkyVnlkRjkxY213aU9pQWlhSFIwY0hNNkx5OTNkM2N1WjI5dloyeGxZWEJwY3k1amIyMHZjbTlpYjNRdmRqRXZiV1YwWVdSaGRHRXZlRFV3T1M5a2IyTnJaWEl0YVcxaFoyVXRjSFZzYkhNdGIyNXNlU1UwTUhWdWMzVndaWEoyYVhObFpDMWtaWFl0YjNCekxtbGhiUzVuYzJWeWRtbGpaV0ZqWTI5MWJuUXVZMjl0SWdwOSJ9fX0=
+
+  # enable tls termination at the nginx-ingress-controller
+  tls:
+    enabled: false
+    domain: localhost
+    tlsCrtBase64: base64-encoded-tls-fullchain-cert
+    tlsKeyBase64: base64-encoded-tls-key
+
+  # console & webapp domain
+  domain: https://localhost
+
+  # fusionauth specific global configurations
+  fusionAuth:
+    domain: https://localhost:30006
+    apiKey: cd5f823f-39f7-48a9-95a1-e1c805472a50
+    templates:
+      mentionedId: 5f83bc27-ba29-4c8f-b40c-65a07105b975
+      forgotPwdId: 68e2963b-2db6-4473-b86c-7ec6bd78a387
+
+  console:
+    # console application.clientId & application.oauthConfiguration.clientSecret for fusionauth
+    clientId: b005e784-6e75-4e7c-9f43-c91e501db8ce
+    clientSecret: bd0c8b73-a9e6-422d-95a9-a9533c88cc5b
+
+  webapp:
+    # webapp application.clientId & application.oauthConfiguration.clientSecret for fusionauth
+    clientId: fb6458f5-c41f-4461-b2fc-5a4a9f979720
+    clientSecret: 85067e31-b9d7-4e26-8d59-99ea5a1c339b
+
+  gasket:
+    auth:
+      enabled: false
+      elasticPassword: 3UMaLrH1UpHbVqP
+
+  minio:
+    accessKey: r1PjBmyabOU0Vx4
+    secretKey: 2C9sQWIhdsnSCKp
+
+  postgres:
+    # root user credentials for postgres database
+    postgresRootPassword: tkGC4CuKYPnZp15
+    postgresRootUser: postgres_user
+    postgresDatabase: postgres_database
+
+# ---------------------------------------------------------------
+# APPLICATION LEVEL CONFIGS
+# ---------------------------------------------------------------
+
+ai:
+  enabled: false
+
+  jupyter-lab:
+    enabled: false
+
+    # Keep this low when developing locally.
+    resources:
+      cpu: 14
+      memory: 50Gi
+
+    # if you want to mount ink code, also enable squid.ink.mountCode
+    mountCode: false
+    mountData: false
+
+    # generate password hash: python -c "from notebook.auth import passwd; print(passwd('XphH1lvBl7lvv21'))"
+    jupyterPasswordHash: sha1:6b08bf2b3d22:5f7cd20e49ed83ac5fc3a92be47ebaa82197839b
+
+fusionauth:
+  mountData: false
+
+  # an admin user with access to console & fusionauth applications
+  adminUser:
+    email: adminfor+meh@unsupervised.com
+    password: lXrdrobNl6EhJQj
+    firstName: Admin
+    lastName: Unsupervised
+
+  # name of company for which fusionauth roles are made
+  companyName: meh
+
+  # create test & demo users for ivy-park, z-cypress-test
+  enableTestUsers: true
+
+  # defines fusionauth application.oauthConfiguration.authorizedRedirectURLs
+  webappLogoutUrl: https://localhost/login
+  webappRedirectUrls:
+    - https://localhost/callback
+  consoleRedirectUrls:
+    - https://localhost/authorize
+
+  # credentials used to send fusionauth application emails
+  smtpPassword: zykmlaervkgsflvu
+  smtpUsername: noreply@unsupervised.com
+
+gasket:
+  enabled: false
+  elasticsearch:
+    mountData: false
+    resources:
+      memory: .5Gi
+      cpu: "0.2"
+    #heapSize: "1024m"
+    storageSize: .5Gi
+
+gitea:
+  enabled: false
+  storageSize: .5Gi
+  oidcAuth: false
+  postgresUser: gitea_user
+  postgresPassword: AYSMuSlFEPQsulv
+  postgresDatabase: gitea_database
+
+  adminUser:
+    username: gitea-admin
+    password: dWrGzVtPall6lVJ  
+    email: noreply@unsupervised.com
+
+kevin:
+  enabled: false
+  mountCode: false
+
+  kevin-backend:
+    mountCode: false
+    mountInitCode: false
+
+    # update gasket to latest schema
+    runGasketMigrate: false
+
+    # set to true to create companies in postgres
+    recreateCompanies: false
+    companies:
+
+    # test company for cypress
+    - name: meh
+      slug: meh
+      es_company_id: 1
+      # specify a custom elasticsearch url, otherwise use local gasket
+      # es_host_url:
+
+    postgres11:
+      mountData: false
+      storageSize: .5Gi
+  kevin-frontend:
+    mountCode: false
+
+minio:
+  enabled: false
+  mountData: false
+
+  # use a block storage volume instead of cloud blob storage backend
+  # standAloneMode must be 'true' if minio.enabled set to 'true'
+  standAloneMode: true
+  minioDiskSize: .5Gi
+
+# only valid for gcloud and aws deployments
+nfs-client:
+  enabled: false
+  aws:
+    efsFsId: 
+
+postgres:
+  # this should be increased in production environments
+  storageSize: .5Gi
+  memory: .4Gi
+  cpu: ".3"
+
+squid:
+  mountCode: false
+  ink:
+    mountCode: false
+
+
+# ---------------------------------------------------------------
+# INGRESS APPLICATIONS
+# ---------------------------------------------------------------
+
+# console & webapp ingress applications
+unsupervised-ingress:
+  enabled: false
+  name: nginx
+
+  # configurations for ingress resources
+  ingressConfig:
+
+    # enable a load balancer in cloud environments
+    # generally additional cloud configurations required
+    loadBalancer:
+      enabled: false
+      type: external
+
+    # enable a node port in development & test environments
+    #nodePort:
+    #  enabled: false
+    #  HTTP: 30007
+    #  HTTPS: 30008
+
+  # configurations for cookie-auth service (only valid for console)
+  auth:
+    enabled: false
+
+# fusionauth ingress application
+fusion-auth-ingress:
+  enabled: false
+  name: fa-nginx
+
+  # configurations for ingress resources
+  ingressConfig:
+
+    # enable a load balancer in cloud environments
+    # generally additional cloud configurations required
+    loadBalancer:
+      enabled: false
+      type: external
+
+    # enable a node port in development & test environments
+    #nodePort:
+    #  enabled: false
+    #  HTTP: 30005
+    #  HTTPS: 30006

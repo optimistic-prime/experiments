@@ -1,14 +1,1 @@
-Grafana hosted from either cluster, fargate, or lambda in core account. 
-
-DB hosted in either fargate or cluster
-
 deployment in each cluster to pull data. Ubuntu pod w/ kubectl
-
-
-
-
-kubegrid
-
-some managed service similar
-
-
