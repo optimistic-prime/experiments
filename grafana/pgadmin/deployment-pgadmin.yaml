@@ -1,0 +1,61 @@
+---
+# Source: unsupervised/charts/postgres/charts/pgadmin/templates/deployment-pgadmin.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+  #namespace: un1-postgres
+  labels:
+    app: pgadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: pgadmin
+      labels:
+        app: pgadmin
+    spec:
+      initContainers:
+      containers:
+        - name: pgadmin
+          image: dpage/pgadmin4:4.22
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: PGPASSFILE
+              value: /tmp/.pgpass
+            - name: PGADMIN_SERVER_JSON_FILE
+              value: /etc/unsupervised/servers.json
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: alex.romine@unsupervised.com
+            - name: PGADMIN_DEFAULT_PASSWORD
+              value: password
+          volumeMounts:
+            - name: pgadmin-config
+              mountPath: /etc/unsupervised/servers.json
+              subPath: servers.json
+            - name: pgpass
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: 250m
+              memory: 500Mi
+            limits:
+              cpu: 250m
+              memory: 500Mi
+      volumes:
+        - name: pgadmin-config
+          configMap:
+            name: pgadmin
+        - name: pgpass
+          emptyDir: {}
+      imagePullSecrets:
+      - name: unsupervised-gcr-io

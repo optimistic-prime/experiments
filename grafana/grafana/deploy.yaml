@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  labels:
+    app: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana:5.4.3
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: grafana-config
+          volumeMounts:
+            - mountPath: /var/lib/grafanaql/data
+              name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: grafana-pv-claim
+
+
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: grafana
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - image: docker.io/grafana/grafana:5.4.3
+        imagePullPolicy: IfNotPresent
+        name: grafana
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

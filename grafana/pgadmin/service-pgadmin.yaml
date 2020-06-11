@@ -1,0 +1,15 @@
+---
+# Source: unsupervised/charts/postgres/charts/pgadmin/templates/service-pgadmin.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgadmin
+  #namespace: un1-postgres
+  labels:
+    app: pgadmin
+spec:
+  selector:
+    app: pgadmin
+  ports:
+  - port: 80
+    targetPort: 80

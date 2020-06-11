@@ -27,7 +27,9 @@ microk8s.kubectl expose deployment grafana --type=NodePort --port=3000 --target-
 # Alex R had some issues with postgres pod, may need to delete your /mnt/data folder (or move it to data.bkup/)
 # Then delete the postgres pod and it should work after a deletion or two. 
 microk8s.kubectl apply -f postgres/
-# login in to db is `PGPASSWORD=admin123 psql -U postgresadmin -d postgresdb`
+# PGPASSWORD=admin123 psql -U postgresadmin -d postgresdb
+# CREATE DATABASE helm_info;
+# 
 
 
 ################################################################################
@@ -52,3 +54,13 @@ microk8s.kubectl apply -f postgres/
   
   helm install meh $unsupervised/unsupervised -f $unsupervised/images.yaml -f unsupervised-values.yaml
 )
+
+################################################################################
+# Pgadmin
+################################################################################
+mk apply -f pgadmin/
+
+# port forward pgadmin pod 
+# make postgres connection in grafana: host=postgres.default.svc.cluster.local user=postgresadmin database=helm_info
+# SELECT name, status, app_version, last_update FROM helm_schema.helm_table ORDER BY name DESC;
+# PGPASSWORD=admin123 psql -U postgresadmin -h postgres.default.svc.cluster.local -d helm_info -p 5432 -c "INSERT INTO helm_schema.helm_table (name, status, app_version, last_update) VALUES ('c5', 'status', 'v3.2.2', '2020-06-04');"

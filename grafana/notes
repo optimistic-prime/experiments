@@ -1,0 +1,19 @@
+make pgadmin pod
+
+create db using pdadmin gui; autoincrement ids for primary key
+
+then mess with alembic
+
+
+helm template; give output dir (--output-dir); same as instlal
+
+helm template un1 unsupervised/ --values deploys/dev.yaml --values images.yaml --output-dir output
+￼
+change cm
+
+Columns:
+. mk config current-context
+. NAME
+. UPDATED
+. STATUS
+. APP_VERSION

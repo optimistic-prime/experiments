@@ -1,0 +1,25 @@
+---
+# Source: unsupervised/charts/postgres/charts/pgadmin/templates/configmap-pgadmin.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgadmin
+  #namespace: un1-postgres
+data:
+  servers.json: |
+    {
+        "Servers": {
+            "1": {
+                "Name": "ReporterPostgres",
+                "Group": "Servers",
+                "Host": "postgres.default.svc.cluster.local",
+                "Port": 5432,
+                "SSLMode": "prefer",
+                "MaintenanceDB": "postgresdb",
+                "Username": "postgresadmin",
+                "PassFile": "/etc/unsupervised/.pgpass"
+            }
+        }
+    }
+  .pgpass: |
+    postgres.default.svc.cluster.local:5432:*:postgres_user:postgres_password

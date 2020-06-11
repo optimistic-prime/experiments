@@ -1,6 +1,7 @@
-from ubuntu:18.04
+from python:3.6-slim
 
-RUN apt update; apt upgrade -y; apt install -y curl
+#RUN apt update; apt install -y curl libpq-dev gcc postgresql vim jq
+RUN apt update; apt install -y curl postgresql vim jq
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
@@ -12,4 +13,9 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master
 RUN chmod 700 get_helm.sh
 RUN ./get_helm.sh
 
-CMD while true; do echo "Running as of `date`"; helm ls; echo; sleep 30; done
+## used for python psql commands
+#RUN pip install psycopg2
+
+COPY insert_helm_info.sh .
+
+CMD while true; do bash insert_helm_info; sleep 300; done

@@ -1,6 +1,0 @@
-microk8s.kubectl create deployment grafana --image=docker.io/grafana/grafana:5.4.3
-
-# tap that on whatever nodeport pops up
-microk8s.kubectl expose deployment grafana --type=NodePort --port=3000 --target-port=3000 --protocol=TCP
-
-
