@@ -25,6 +25,7 @@ echo "
 (
   # need env vars for code and unsupervised folder paths
   # ie. on AR's computer: code=/home/alex/code/repos/code
+
   #######################################################
   # Get hash for commit in code repo
   #######################################################
@@ -44,11 +45,13 @@ echo "
   cd $unsupervised
   git checkout $BRANCH
   git pull
-  git checkout -b $BRANCH-new-release
+  git checkout -b $BRANCH-$RELEASE_NUMBER
 
   CURRENT_HASH=$(cat images.yaml | yq -r .global.images.kbe.tag)
   sed -i "s/$CURRENT_HASH/$NEW_HASH/g" images.yaml
   echo 'hash replacement complete'
+
+  git push --set-upstream origin $BRANCH-$RELEASE_NUMBER
 
 
   #######################################################
@@ -56,16 +59,21 @@ echo "
   #######################################################
   echo; echo 'Replacing unsupervised versions'
   cd $unsupervised
+
+  echo; echo 'update version'
   yq -yi ".version = \"$RELEASE_NUMBER\"" unsupervised/Chart.yaml
+  echo; echo 'update appVersion'
   yq -yi ".appVersion = \"$RELEASE_NUMBER\"" unsupervised/Chart.yaml
 
 
   #######################################################
-  # Creating PR for new release
+  # Creating PR for new release in unsupervised repo
   #######################################################
+  cd $unsupervised
   git pull
   git add -A
-  git commit -m "commit for release v${RELEASE_NUMBER}"
+  git commit -m "commit for release ${RELEASE_NUMBER}"
+  echo; echo "pushing to unsupervised, $BRANCH-$RELEASE_NUMBER"
   git push --set-upstream origin $BRANCH-$RELEASE_NUMBER
 
   echo; echo 'Please create a PR here: https://github.com/Unsupervisedcom/unsupervised/pulls'
