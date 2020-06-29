@@ -13,9 +13,10 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master
 RUN chmod 700 get_helm.sh
 RUN ./get_helm.sh
 
+
 ## used for python psql commands
 #RUN pip install psycopg2
 
-COPY insert_helm_info.sh .
+COPY update_helm_info.sh .
 
-CMD while true; do bash insert_helm_info; sleep 300; done
+CMD ./update_helm_info.sh
