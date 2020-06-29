@@ -28,36 +28,36 @@ echo "
   #######################################################
   # Get hash for commit in code repo
   #######################################################
-  #echo; echo 'Getting code hash'
-  #cd $code
-  #git checkout $BRANCH
-  #git pull
+  echo; echo 'Getting code hash'
+  cd $code
+  git checkout $BRANCH
+  git pull
 
-  #NEW_HASH=$(git rev-parse HEAD)
-  #echo; echo "new hash:"; echo "$NEW_HASH"; echo
+  NEW_HASH=$(git rev-parse HEAD)
+  echo; echo "new hash:"; echo "$NEW_HASH"; echo
 
 
-  ########################################################
-  ## Replace unsupervised images.yaml hash
-  ########################################################
-  #echo; echo 'Replacing unsupervised images hash'
-  #cd $unsupervised
-  #git checkout $BRANCH
-  #git pull
-  #git checkout -b $BRANCH-new-release
+  #######################################################
+  # Replace unsupervised images.yaml hash
+  #######################################################
+  echo; echo 'Replacing unsupervised images hash'
+  cd $unsupervised
+  git checkout $BRANCH
+  git pull
+  git checkout -b $BRANCH-new-release
 
-  #CURRENT_HASH=$(cat images.yaml | yq -r .global.images.kbe.tag)
-  #sed -i "s/$CURRENT_HASH/$NEW_HASH/g" images.yaml
-  #echo 'hash replacement complete'
+  CURRENT_HASH=$(cat images.yaml | yq -r .global.images.kbe.tag)
+  sed -i "s/$CURRENT_HASH/$NEW_HASH/g" images.yaml
+  echo 'hash replacement complete'
 
 
   #######################################################
   # Replace Chart.yaml version and appVersion
   #######################################################
-  #echo; echo 'Replacing unsupervised versions'
-  #cd $unsupervised
-  #yq -yi ".version = \"$RELEASE_NUMBER\"" unsupervised/Chart.yaml
-  #yq -yi ".appVersion = \"$RELEASE_NUMBER\"" unsupervised/Chart.yaml
+  echo; echo 'Replacing unsupervised versions'
+  cd $unsupervised
+  yq -yi ".version = \"$RELEASE_NUMBER\"" unsupervised/Chart.yaml
+  yq -yi ".appVersion = \"$RELEASE_NUMBER\"" unsupervised/Chart.yaml
 
 
   #######################################################
@@ -68,4 +68,5 @@ echo "
   git commit -m "commit for release v${RELEASE_NUMBER}"
   git push --set-upstream origin $BRANCH-$RELEASE_NUMBER
 
+  echo; echo 'Please create a PR here: https://github.com/Unsupervisedcom/unsupervised/pulls'
 )
